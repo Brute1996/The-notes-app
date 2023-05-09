@@ -16,11 +16,21 @@ const Workspace = () => {
     const [noteTitleValue, setNoteTitleValue] = useState('')
     const [noteBodyValue, setNoteBodyValue] = useState('')
     const [createdNoteDate, setCreatedNoteDate] = useState('')
+    const [currentTime, setCurrentTime] = useState(moment());
+
+    useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTime(moment());
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
     useEffect(() => {
         if (!selectedNote) {
             setNoteTitleValue('')
             setNoteBodyValue('')
+            setCreatedNoteDate('')
             return
         };
 
@@ -63,12 +73,23 @@ const Workspace = () => {
         }
     };
 
-    console.log(readOnlyToggle);
+
+    const displayDate = () => {
+        const createNoteDateFormatted = moment(createdNoteDate).format("[note was created at] MMM DD, YYYY [at] hh:mm A");
+
+        if (createdNoteDate) {
+            return createNoteDateFormatted;
+        } else {
+            return currentTime.format("[now] MMM DD, YYYY [at] hh:mm A");
+        }
+
+    }
+
 
     return (
         <WorkspaceStyle>
             <time dateTime={createdNoteDate}>
-                {createdNoteDate && moment(createdNoteDate).format("MMM DD, YYYY [at] hh:mm A")}
+                {displayDate(createdNoteDate)}
             </time>
             <input onChange={handleChange}
                 name="note-title"
