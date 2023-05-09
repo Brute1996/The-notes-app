@@ -11,7 +11,7 @@ const SearchBoxStyle = styled.div`
     top: 45%;
     left: 50%;
     transform: translate(-55%, -50%);
-    font-size: 16px;
+    font-size: 18px;
     user-select: none;
     pointer-events: none;
   }
@@ -19,9 +19,14 @@ const SearchBoxStyle = styled.div`
   input {
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.5);
-    padding: 4px;
-    height: 36px;
-    width: 250px;
+    padding: 6px;
+    height: 38px;
+    width: 300px;
+    box-shadow: 0px 0px 2px #000;
+
+    &:focus {
+      outline: none;
+    }
   }
 `;
 

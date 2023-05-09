@@ -36,7 +36,7 @@ const Workspace = () => {
 
         setNoteTitleValue(selectedNote.values[noteTitle] || "");
         setNoteBodyValue(selectedNote.values[noteBody] || "");
-        setCreatedNoteDate(selectedNote.created_at)
+        setCreatedNoteDate(selectedNote.created_at || "")
         
     },[selectedNote])
 
@@ -75,12 +75,12 @@ const Workspace = () => {
 
 
     const displayDate = () => {
-        const createNoteDateFormatted = moment(createdNoteDate).format("[note was created at] MMM DD, YYYY [at] hh:mm A");
+        const createNoteDateFormatted = moment(createdNoteDate).format("[note was created] MMM DD, YYYY [at] hh:mm A");
 
         if (createdNoteDate) {
             return createNoteDateFormatted;
         } else {
-            return currentTime.format("[now] MMM DD, YYYY [at] hh:mm A");
+            return currentTime.format("[now] MMM DD, YYYY - hh:mm A");
         }
 
     }
@@ -91,9 +91,11 @@ const Workspace = () => {
             <time dateTime={createdNoteDate}>
                 {displayDate(createdNoteDate)}
             </time>
-            <input onChange={handleChange}
+            
+            <input
+                onChange={handleChange}
                 name="note-title"
-                placeholder= {selectedNote && "Note title"}
+                placeholder= {selectedNote && "Enter note title..."}
                 value={noteTitleValue}
                 readOnly={readOnlyToggle}>
             </input>
@@ -101,7 +103,7 @@ const Workspace = () => {
             <textarea
                 name="note-body"
                 onChange={handleChange}
-                placeholder={ selectedNote && "Enter your note..."}
+                placeholder={ selectedNote && "Your note..."}
                 value={noteBodyValue}
                 readOnly={readOnlyToggle}>
                 

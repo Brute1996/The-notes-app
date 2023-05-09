@@ -6,8 +6,8 @@ const Header = () => {
     return (
         <HeaderStyle>
             <HeaderContainer>
-                            <Sidebar/>
-            <SearchBox />
+                <Sidebar />
+                <SearchBox />
             </HeaderContainer>
 
         </HeaderStyle>

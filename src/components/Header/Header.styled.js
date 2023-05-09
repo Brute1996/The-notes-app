@@ -5,10 +5,10 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
+  padding: 16px 10px;
 `;
 
 export const HeaderStyle = styled.header`
-  padding: 16px;
   background-color: #d6d6d6;
   width: 100%;
 `;
