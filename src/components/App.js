@@ -5,6 +5,10 @@ import Workspace from "./Workspace/Workspace";
 import { createContext } from "react";
 import AppWrapper from "./App.styled";
 import SearchBox from "./SearchBox/SearchBox";
+import ListItem from "./ListItem/ListItem";
+import Container from "./utils/Container/Container";
+import Header from "./Header/Header";
+import Main from "./Main/Main";
 
 const testDB = [
   {
@@ -84,22 +88,18 @@ function App() {
         notes,
         selectedNote,
         searchQuery,
+        readOnlyToggle,
+        selectedNoteRef,
         setSelectedNote,
         setNotes,
         setSelectedNoteRef,
         setSearchQuery,
+        setReadOnlyToggle,
       }}
     >
       <AppWrapper>
-        <Sidebar
-          setReadOnlyToggle={setReadOnlyToggle}
-          readOnlyToggle={readOnlyToggle}
-        />
-        <Workspace
-          selectedNote={selectedNote}
-          readOnlyToggle={readOnlyToggle}
-          selectedNoteRef={selectedNoteRef}
-        />
+        <Header />
+        <Main />
       </AppWrapper>
     </NotesContext.Provider>
   );

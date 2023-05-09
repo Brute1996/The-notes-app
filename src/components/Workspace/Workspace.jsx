@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import api from "../api";
 import WorkspaceStyle from "./Workspace.styled";
 import { innerTextFormater } from "../../helpers/helpers";
 import moment from "moment/moment";
 import { debounce } from "lodash";
+import { NotesContext } from "../App";
 
 
 const { noteTitle, noteBody } = api.fieldsNamesId;
 
-const Workspace = ({ selectedNote, readOnlyToggle, selectedNoteRef }) => {
+const Workspace = () => {
+    const { selectedNote, readOnlyToggle, selectedNoteRef } = useContext(NotesContext);
+
+
     const [noteTitleValue, setNoteTitleValue] = useState('')
     const [noteBodyValue, setNoteBodyValue] = useState('')
     const [createdNoteDate, setCreatedNoteDate] = useState('')
@@ -58,6 +62,8 @@ const Workspace = ({ selectedNote, readOnlyToggle, selectedNoteRef }) => {
                 break;
         }
     };
+
+    console.log(readOnlyToggle);
 
     return (
         <WorkspaceStyle>

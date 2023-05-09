@@ -1,14 +1,14 @@
-import { useContext, useEffect, useState } from "react";
-import ListItem from "../ListItem/ListItem";
+import { useContext, useEffect } from "react";
 import api from "../api";
 import SidebarStyle from "./Sidebar.styled";
 import { NotesContext } from "../App";
 import { nanoid } from "nanoid";
-import SearchBox from "../SearchBox/SearchBox";
+import { AiOutlinePlus, AiOutlineDelete } from "react-icons/ai";
+import { FaRegEdit } from "react-icons/fa";
 
-const Sidebar = ({readOnlyToggle, setReadOnlyToggle}) => {
+const Sidebar = () => {
 
-    const { selectedNote, notes, setNotes, setSelectedNote, setSelectedNoteRef } = useContext(NotesContext);
+    const { selectedNote, notes, setNotes, setSelectedNote, setSelectedNoteRef, readOnlyToggle, setReadOnlyToggle } = useContext(NotesContext);
 
 
     useEffect(() => {
@@ -71,23 +71,21 @@ const Sidebar = ({readOnlyToggle, setReadOnlyToggle}) => {
                 <button
                     type="button"
                     onClick={handleNoteCreate}>
-                    Create
+                    <AiOutlinePlus/>
                 </button>
                 <button
                     type="button"
                     onClick={handleNoteDelete}
                     disabled={selectedNote ? false : true}>
-                    Delete
+                    <AiOutlineDelete/>
                 </button>
                 <button
                     type="button"
                     onClick={handleNoteEdit}
                     disabled={selectedNote ? false : true}>
-                    Edit
+                    <FaRegEdit/>
                 </button>
             </div>
-             <SearchBox />
-                <ListItem />
         </SidebarStyle>
     )
 };
