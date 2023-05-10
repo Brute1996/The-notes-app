@@ -8,6 +8,18 @@ import { FaRegEdit } from "react-icons/fa";
 
 const { noteTitle, noteBody } = api.fieldsNamesId;
 
+const dsiplayDateOfItem = (createdAtDate) => {
+    const dateNow = new Date().toISOString();
+    const createdAtDateMMDDYYFormat = moment(createdAtDate).format('MM/DD/YY');
+
+        
+    if (moment(dateNow).format('MM/DD/YY') === createdAtDateMMDDYYFormat) {
+        return moment(createdAtDate).format('h:mm A');
+    } else {
+        return createdAtDateMMDDYYFormat;
+    }
+};
+
 
 const ListItem = () => {
     const {
@@ -50,17 +62,7 @@ const ListItem = () => {
     };
 
 
-    const dsiplayDateOfItem = (createdAtDate) => {
-        const dateNow = new Date().toISOString();
-        const createdAtDateMMDDYYFormat = moment(createdAtDate).format('MM/DD/YY');
 
-        
-        if (moment(dateNow).format('MM/DD/YY') === createdAtDateMMDDYYFormat) {
-            return moment(createdAtDate).format('h:mm A');
-        } else {
-            return createdAtDateMMDDYYFormat;
-        }
-    }
 
     return (
         <ListStyle>

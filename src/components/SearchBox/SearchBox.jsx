@@ -7,14 +7,14 @@ import SearchBoxStyle from "./SearchBox.styled";
 const SearchBox = () => {
     
   const { searchQuery, setSearchQuery } = useContext(NotesContext);
-  const [isIconHidden, setIconIsHidden] = useState(false);
+  const [isPlaceholderHidden, setPlaseholderIsHidden] = useState(false);
 
   const handleFocus = () => {
-    setIconIsHidden(true);
+    setPlaseholderIsHidden(true);
   };
 
   const handleBlur = () => {
-    setIconIsHidden(false);
+    setPlaseholderIsHidden(false);
   };
 
 
@@ -26,7 +26,7 @@ const SearchBox = () => {
 
     return (
         <SearchBoxStyle>
-            {!isIconHidden && !searchQuery && <span className="search-icon"><AiOutlineSearch />Search</span>}
+            {!isPlaceholderHidden && !searchQuery && <span className="search-icon"><AiOutlineSearch />Search</span>}
             <input
                 onFocus={handleFocus}
                 onBlur={handleBlur}
