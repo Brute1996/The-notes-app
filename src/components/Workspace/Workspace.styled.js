@@ -9,9 +9,14 @@ const WorkspaceStyle = styled.div`
     padding: 6px;
     text-align: center;
     height: 36px;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
     color: grey;
+
+    @media (min-width: 768px) {
+      font-size: 18px;
+      font-weight: 500;
+    }
   }
 
   input {

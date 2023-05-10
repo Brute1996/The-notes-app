@@ -21,11 +21,15 @@ const SearchBoxStyle = styled.div`
     border: 1px solid rgba(0, 0, 0, 0.5);
     padding: 6px;
     height: 38px;
-    width: 300px;
+    width: 250px;
     box-shadow: 0px 0px 2px #000;
 
     &:focus {
       outline: none;
+    }
+
+    @media (min-width: 768px) {
+      width: 300px;
     }
   }
 `;

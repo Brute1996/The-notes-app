@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import api from "../api";
 import SidebarStyle from "./Sidebar.styled";
 import { NotesContext } from "../App";

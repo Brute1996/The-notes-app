@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import api from "../api";
 import WorkspaceStyle from "./Workspace.styled";
-import { innerTextFormater } from "../../helpers/helpers";
 import { debounce } from "lodash";
 import { NotesContext } from "../App";
 import DisplayDate from "../DisplayDate/DisplayDate";
@@ -38,8 +37,8 @@ const Workspace = () => {
             return
         };
 
-        selectedNoteTitleInList.innerText = innerTextFormater(20, noteTitleValue);
-        selectedNoteBodyInList.innerText = innerTextFormater(20, noteBodyValue);
+        selectedNoteTitleInList.innerText = noteTitleValue;
+        selectedNoteBodyInList.innerText = noteBodyValue;
         selectedNote.values[noteTitle] = noteTitleValue;
         selectedNote.values[noteBody] = noteBodyValue;
         

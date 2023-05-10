@@ -2,7 +2,6 @@ import { useContext, useEffect, useRef } from "react";
 import api from "../api";
 import {ListItemStyle, ListStyle} from "./ListItem.styled";
 import { NotesContext } from "../App";
-import { innerTextFormater } from "../../helpers/helpers";
 import moment from "moment";
 import { FaRegEdit } from "react-icons/fa";
 
@@ -29,6 +28,7 @@ const ListItem = () => {
         const selectedNoteIndex = notes.indexOf(selectedNote)
         const selectedNoteRef = notesRefs.current[selectedNoteIndex];
         setSelectedNoteRef(selectedNoteRef)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedNote])
 
     const handleClick = (noteId) => {
@@ -62,15 +62,6 @@ const ListItem = () => {
         }
     }
 
-    const showEditModeIcon = (editMode) => {
-        return (
-            editMode
-                ?
-                <FaRegEdit className="edit-mode-icon" />
-                : null
-        )
-    };
-
     return (
         <ListStyle>
             {filteredNotes().map(({ values, created_at, id, editMode }, index) =>
@@ -79,11 +70,11 @@ const ListItem = () => {
                     onClick={() => handleClick(id, index)}
                     key={id}
                     ref={(ref) => notesRefs.current[index] = ref}>
-                    <h2 className="note-short-title">{innerTextFormater(20, values[noteTitle])}</h2>
+                    <h2 className="note-short-title">{values[noteTitle]}</h2>
                     <div className="note-item-info">
-                        {showEditModeIcon(editMode)}
+                        {editMode ? <FaRegEdit className="edit-mode-icon" /> : null}
                         <time dateTime={created_at} className="time-created">{dsiplayDateOfItem(created_at)}</time>
-                        <p className="note-short-text">{innerTextFormater(20, values[noteBody])}</p>
+                        <p className="note-short-text">{values[noteBody]}</p>
                     </div>
                 </ListItemStyle>)}
         </ListStyle>

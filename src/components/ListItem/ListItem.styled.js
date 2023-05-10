@@ -3,6 +3,12 @@ import styled from "@emotion/styled";
 export const ListStyle = styled.ul`
   overflow-y: scroll;
   height: 100%;
+  display: flex;
+
+  @media (min-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 export const ListItemStyle = styled.li`
@@ -10,34 +16,72 @@ export const ListItemStyle = styled.li`
   display: flex;
   flex-direction: column;
   gap: 8px;
-
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  height: 100px;
-  padding: 18px 25px;
+  border-bottom-right-radius: 10px;
+  min-height: 115px;
+  max-height: 115px;
+  min-width: 150px;
+  padding: 6px;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
 
+  @media (min-width: 768px) {
+    padding: 18px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 0;
+    min-width: 100%;
+    min-height: 105px;
+  }
+
   .note-short-title {
     height: 25px;
+    font-size: 20px;
+    max-width: 270px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      text-align: left;
+    }
   }
 
   .note-item-info {
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    flex-direction: column;
+    gap: 6px;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      gap: 0;
+    }
   }
 
   .time-created {
-    font-size: 17px;
-    margin-right: 12px;
+    display: block;
+    width: 75px;
+    font-size: 16px;
+    margin-right: 4px;
   }
 
   .note-short-text {
     font-size: 15px;
     color: rgba(0, 0, 0, 0.8);
+    height: 18px;
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media (min-width: 768px) {
+      max-width: 230px;
+    }
   }
 
   .edit-mode-icon {
