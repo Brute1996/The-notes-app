@@ -3,7 +3,7 @@ import api from "../api";
 import WorkspaceStyle from "./Workspace.styled";
 import { debounce } from "lodash";
 import { NotesContext } from "../App";
-import DisplayDate from "../DisplayDate/DisplayDate";
+import DisplayDateTime from "../DisplayDateTime/DisplayDateTime";
 
 
 const { noteTitle, noteBody } = api.fieldsNamesId;
@@ -52,7 +52,7 @@ const Workspace = () => {
 
     return (
         <WorkspaceStyle>
-            <DisplayDate selectedNote={selectedNote} />
+            <DisplayDateTime selectedNote={selectedNote} />
             <input
                 ref={inputTitleRef}
                 onChange={handleChange}

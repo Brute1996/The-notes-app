@@ -1,7 +1,7 @@
 import moment from "moment";
 import { useEffect, useState } from "react";
 
-const DisplayDate = ({selectedNote}) => {
+const DisplayDateTime = ({selectedNote}) => {
     const [createdNoteDate, setCreatedNoteDate] = useState('');
     const [currentTime, setCurrentTime] = useState(moment());
 
@@ -14,7 +14,7 @@ const DisplayDate = ({selectedNote}) => {
         return () => clearInterval(intervalId);
     }, []);
 
-        useEffect(() => {
+    useEffect(() => {
         if (!selectedNote) {
             setCreatedNoteDate('')
             return
@@ -22,7 +22,7 @@ const DisplayDate = ({selectedNote}) => {
 
         setCreatedNoteDate(selectedNote.created_at || "")
         
-    },[selectedNote])
+    }, [selectedNote]);
 
     
     const displayDate = () => {
@@ -44,4 +44,4 @@ const DisplayDate = ({selectedNote}) => {
     )
 };
 
-export default DisplayDate;
+export default DisplayDateTime;
