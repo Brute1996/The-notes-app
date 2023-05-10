@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import api from "../api";
 import SidebarStyle from "./Sidebar.styled";
 import { NotesContext } from "../App";
@@ -8,17 +8,8 @@ import { FaRegEdit } from "react-icons/fa";
 
 const Sidebar = () => {
 
-    const { selectedNote, notes, setNotes, setSelectedNote, setSelectedNoteRef, readOnlyToggle, setReadOnlyToggle } = useContext(NotesContext);
+    const { selectedNote, notes, setNotes, setSelectedNote, setSelectedNoteRef } = useContext(NotesContext);
 
-
-    useEffect(() => {
-        if (!selectedNote) {
-            return;
-        };
-
-        setReadOnlyToggle(true)
-        
-    }, [selectedNote, setReadOnlyToggle]);
 
     const handleNoteCreate = () => {
 
@@ -29,6 +20,7 @@ const Sidebar = () => {
         const newNote = {
             id: nanoid(),
             created_at: createdDate,
+            editMode: true,
             values: {
                 [noteBody]: "",
                 [noteTitle]: "",
@@ -56,12 +48,28 @@ const Sidebar = () => {
         };
     };
 
+
+
     const handleNoteEdit = () => {
         if (!selectedNote) {
             return;
         };
 
-        setReadOnlyToggle(!readOnlyToggle)
+        const isEditMode = selectedNote?.editMode;
+        const toggleEditMode = (editMode) => !editMode;
+        
+        selectedNote.editMode = toggleEditMode(isEditMode);
+
+
+        const newNotes = notes.map((note) => {
+            if (note.id === selectedNote.id) {
+                return selectedNote;
+            }
+            return note;
+        });
+
+        setNotes(newNotes);
+
     };
 
 

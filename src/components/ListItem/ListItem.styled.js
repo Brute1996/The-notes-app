@@ -6,6 +6,7 @@ export const ListStyle = styled.ul`
 `;
 
 export const ListItemStyle = styled.li`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -26,14 +27,22 @@ export const ListItemStyle = styled.li`
 
   .note-item-info {
     display: flex;
+    align-items: center;
   }
 
   .time-created {
-    margin-right: 15px;
+    font-size: 17px;
+    margin-right: 12px;
   }
 
   .note-short-text {
-    font-size: 17px;
+    font-size: 15px;
     color: rgba(0, 0, 0, 0.8);
+  }
+
+  .edit-mode-icon {
+    position: absolute;
+    bottom: 8%;
+    left: 3%;
   }
 `;

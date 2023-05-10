@@ -4,6 +4,7 @@ import {ListItemStyle, ListStyle} from "./ListItem.styled";
 import { NotesContext } from "../App";
 import { innerTextFormater } from "../../helpers/helpers";
 import moment from "moment";
+import { FaRegEdit } from "react-icons/fa";
 
 
 const { noteTitle, noteBody } = api.fieldsNamesId;
@@ -34,8 +35,6 @@ const ListItem = () => {
         setSelectedNote(notes.find(({ id }) => id === noteId))
     }
 
-    console.log(notes);
-
     const filteredNotes = () => {
         const normlizeQuery = searchQuery.toLowerCase();
 
@@ -63,10 +62,18 @@ const ListItem = () => {
         }
     }
 
+    const showEditModeIcon = (editMode) => {
+        return (
+            editMode
+                ?
+                <FaRegEdit className="edit-mode-icon" />
+                : null
+        )
+    };
 
     return (
         <ListStyle>
-            {filteredNotes().map(({ values, created_at, id }, index) =>
+            {filteredNotes().map(({ values, created_at, id, editMode }, index) =>
                 <ListItemStyle
                     style={{ backgroundColor: selectedNote?.id === id ? "rgba(0,0,0,0.1" : "" }}
                     onClick={() => handleClick(id, index)}
@@ -74,6 +81,7 @@ const ListItem = () => {
                     ref={(ref) => notesRefs.current[index] = ref}>
                     <h2 className="note-short-title">{innerTextFormater(20, values[noteTitle])}</h2>
                     <div className="note-item-info">
+                        {showEditModeIcon(editMode)}
                         <time dateTime={created_at} className="time-created">{dsiplayDateOfItem(created_at)}</time>
                         <p className="note-short-text">{innerTextFormater(20, values[noteBody])}</p>
                     </div>

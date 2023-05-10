@@ -11,7 +11,7 @@ const fieldsNamesId = {
 const getNotes = async () => {
   try {
     const { data } = await axios.get(
-      "https://quintadb.com/apps/ckW7JcKWfemyohW4HThSkA/dtypes/entity/bKW49eWQzkhioff8kkWPif.json?rest_api_key=cTWPPWWOjcW7mKhCojnhvC&amp;view="
+      "https://quintadb.com/apps/ckW7JcKWfemyohW4HThSkA/dtypes/entity/bKW49eWQzkhioff8kkWPif.json?rest_api_key=cTWPPWWOjcW7mKhCojnhvC&amp;per_page=100"
     );
     return data;
   } catch (error) {
