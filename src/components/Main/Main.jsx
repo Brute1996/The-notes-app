@@ -1,13 +1,14 @@
 import ListItem from "../ListItem/ListItem";
+import Loader from "../Loader/Loader";
 import Workspace from "../Workspace/Workspace";
 import {MainStyle, MainContainer} from "./Main.styled";
 
-const Main = () => {
+const Main = ({isLoaded}) => {
     return (
         <MainStyle>
             <MainContainer>
                 <aside className="list-items-aside">
-                    <ListItem />
+                    { isLoaded ? <ListItem /> : <div className="loader-wrapper"><Loader/></div>}
                 </aside>
                 <section className="workspace-section">
                     <Workspace

@@ -12,17 +12,22 @@ function App() {
   const [selectedNote, setSelectedNote] = useState(null);
   const [selectedNoteRef, setSelectedNoteRef] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isLoaded, setIsLoaded] = useState(null);
 
   useEffect(() => {
+    setIsLoaded(false);
     api
       .getNotes()
-      .then(({ records }) =>
+      .then(({ records }) => {
         setNotes(
           records.sort(
             (a, b) => new Date(b.created_at) - new Date(a.created_at)
           )
-        )
-      );
+        );
+      })
+      .catch((error) => console.log(error))
+      .finally(() => setIsLoaded(true));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -40,7 +45,7 @@ function App() {
     >
       <AppWrapper>
         <Header />
-        <Main />
+        <Main isLoaded={isLoaded} />
       </AppWrapper>
     </NotesContext.Provider>
   );

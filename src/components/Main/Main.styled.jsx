@@ -17,15 +17,22 @@ height: calc(100vh - 122px);
 
 .list-items-aside{
     width: 100%;
-    
     @media (min-width: 768px) {
         width: calc(100%/3.5);
     };
+
+    .loader-wrapper{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .workspace-section{
     width: 100%;
     height: 100%;
+
     @media (min-width: 768px) {
     border-right: 2px solid #d6d6d6;
     border-left: 2px solid #d6d6d6;;

@@ -22,6 +22,7 @@ export const ListItemStyle = styled.li`
   min-height: 115px;
   max-height: 115px;
   min-width: 150px;
+  max-width: 150px;
   padding: 6px;
 
   &:hover {
@@ -34,6 +35,7 @@ export const ListItemStyle = styled.li`
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 0;
     min-width: 100%;
+    max-width: 100%;
     min-height: 105px;
   }
 
@@ -65,9 +67,13 @@ export const ListItemStyle = styled.li`
 
   .time-created {
     display: block;
-    width: 75px;
+    min-width: 75px;
     font-size: 16px;
-    margin-right: 4px;
+    margin: 0 auto;
+
+    @media (min-width: 768px) {
+      margin: 0 4px 0 0;
+    }
   }
 
   .note-short-text {
