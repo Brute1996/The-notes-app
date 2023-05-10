@@ -1,17 +1,17 @@
 import axios from "axios";
 
-const API_KEY = "cTWPPWWOjcW7mKhCojnhvC";
+const API_KEY = "dcQg7dUSjak4kCWPfoW6rQ";
 
 const fieldsNamesId = {
-  noteTitle: "cOnqqUCJndSyk5fJhdSCkU",
-  noteBody: "cug8k_DCjkiykNWQhcSCkv",
-  entity_id: "bKW49eWQzkhioff8kkWPif",
+  noteTitle: "baWQ4ImmjjnOkmWQddQrel",
+  noteBody: "ddNZ1AB8ngWOJcICkNWQOq",
+  entity_id: "bjg8krW4rlyiovaSoTj8kb",
 };
 
 const getNotes = async () => {
   try {
     const { data } = await axios.get(
-      "https://quintadb.com/apps/ckW7JcKWfemyohW4HThSkA/dtypes/entity/bKW49eWQzkhioff8kkWPif.json?rest_api_key=cTWPPWWOjcW7mKhCojnhvC&amp;per_page=100"
+      `https://quintadb.com/apps/b-W5LoW7ThoOk9A2FdGSoG/dtypes/entity/bjg8krW4rlyiovaSoTj8kb.json?rest_api_key=${API_KEY}&amp;per_page=100`
     );
     return data;
   } catch (error) {
@@ -35,7 +35,7 @@ const createNote = async (note) => {
 
   try {
     const { data } = await axios.post(
-      "https://quintadb.com/apps/ckW7JcKWfemyohW4HThSkA/dtypes.json?rest_api_key=cTWPPWWOjcW7mKhCojnhvC",
+      `https://quintadb.com/apps/b-W5LoW7ThoOk9A2FdGSoG/dtypes.json?rest_api_key=${API_KEY}`,
       reqBody
     );
     return data;
@@ -47,7 +47,7 @@ const createNote = async (note) => {
 const deleteNote = async (noteIdToDelete) => {
   try {
     const { data } = await axios.delete(
-      `https://quintadb.com/apps/ckW7JcKWfemyohW4HThSkA/dtypes/${noteIdToDelete}.json?rest_api_key=cTWPPWWOjcW7mKhCojnhvC`
+      `https://quintadb.com/apps/b-W5LoW7ThoOk9A2FdGSoG/dtypes/${noteIdToDelete}.json?rest_api_key=${API_KEY}`
     );
     return data;
   } catch (error) {
@@ -63,7 +63,7 @@ const updateNote = async (noteIdToUpdate, note) => {
 
   try {
     const { data } = await axios.put(
-      `https://quintadb.com/apps/ckW7JcKWfemyohW4HThSkA/dtypes/${noteIdToUpdate}.json?rest_api_key=cTWPPWWOjcW7mKhCojnhvC`,
+      `https://quintadb.com/apps/b-W5LoW7ThoOk9A2FdGSoG/dtypes/${noteIdToUpdate}.json?rest_api_key=${API_KEY}`,
       reqBody
     );
     return data;

@@ -1,5 +1,6 @@
 {
   "name": "the-notes-app",
+  "homepage": "https://Brute1996.github.io/the-notes-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,6 +10,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
+    "gh-pages": "^5.0.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "nanoid": "^4.0.2",
@@ -22,7 +24,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

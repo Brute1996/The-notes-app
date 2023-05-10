@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef } from "react";
 import api from "../api";
 import WorkspaceStyle from "./Workspace.styled";
 import { debounce } from "lodash";
@@ -11,72 +11,61 @@ const { noteTitle, noteBody } = api.fieldsNamesId;
 const Workspace = () => {
     const { selectedNote, selectedNoteRef } = useContext(NotesContext);
 
-
-    const [noteTitleValue, setNoteTitleValue] = useState('')
-    const [noteBodyValue, setNoteBodyValue] = useState('')
-
-
     const selectedNoteTitleInList = selectedNoteRef?.querySelector(".note-short-title");
     const selectedNoteBodyInList = selectedNoteRef?.querySelector(".note-short-text");
+    const inputTitleRef = useRef();
+    const textAreaBodyRef = useRef();
 
 
     useEffect(() => {
         if (!selectedNote) {
-            setNoteTitleValue('')
-            setNoteBodyValue('')
+            inputTitleRef.current.value = "";
+            textAreaBodyRef.current.value = "";
             return
         };
-
-        setNoteTitleValue(selectedNote.values[noteTitle] || "");
-        setNoteBodyValue(selectedNote.values[noteBody] || "");
         
+
+        inputTitleRef.current.value = selectedNote.values[noteTitle];
+        textAreaBodyRef.current.value = selectedNote.values[noteBody];
     },[selectedNote])
 
-    useEffect(() => {
-        if (!selectedNoteRef) {
-            return
-        };
 
-        selectedNoteTitleInList.innerText = noteTitleValue;
-        selectedNoteBodyInList.innerText = noteBodyValue;
-        selectedNote.values[noteTitle] = noteTitleValue;
-        selectedNote.values[noteBody] = noteBodyValue;
-        
-
-        // api.updateNote(selectedNote.id, selectedNote);
-
-    }, [noteTitleValue, noteBodyValue]);
-
-    const handleChange = (e) => {
+    const handleChange = debounce((e) => {
         const { name, value } = e.target;
         switch (name) {
             case "note-title":
-                setNoteTitleValue(value)
+                selectedNoteTitleInList.innerText = value;
+                selectedNote.values[noteTitle] = value;
+
+                api.updateNote(selectedNote.id, selectedNote);
                 break;
             case "note-body":
-                setNoteBodyValue(value)
+                selectedNoteBodyInList.innerText = value;
+                selectedNote.values[noteBody] = value;
+
+                api.updateNote(selectedNote.id, selectedNote);
                 break;
             default:
                 return;
         }
-    };
+    }, 500)
 
     return (
         <WorkspaceStyle>
             <DisplayDate selectedNote={selectedNote} />
             <input
+                ref={inputTitleRef}
                 onChange={handleChange}
                 name="note-title"
                 placeholder= {selectedNote && "Enter note title..."}
-                value={noteTitleValue}
                 readOnly={selectedNote?.editMode ? false : true}
             />
 
             <textarea
+                ref={textAreaBodyRef}
                 name="note-body"
                 onChange={handleChange}
                 placeholder={ selectedNote && "Your note..."}
-                value={noteBodyValue}
                 readOnly={selectedNote?.editMode ? false : true}
             />
             

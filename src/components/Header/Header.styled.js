@@ -10,6 +10,8 @@ export const HeaderContainer = styled.div`
   padding: 16px 10px;
 
   @media (min-width: 768px) {
+    padding-left: 55px;
+    padding-right: 30px;
     flex-direction: row;
     justify-content: space-between;
     gap: 0;

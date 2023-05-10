@@ -11,8 +11,8 @@ height: calc(100vh - 122px);
 @media (min-width: 768px) {
     flex-direction: row;
     height: calc(100vh - 70px);
-    padding-left: 10px;
-    border-right: 2px solid #d6d6d6;
+    padding: 0 10px;
+    
 }
 
 .list-items-aside{
@@ -26,10 +26,16 @@ height: calc(100vh - 122px);
 .workspace-section{
     width: 100%;
     height: 100%;
+    @media (min-width: 768px) {
+    border-right: 2px solid #d6d6d6;
+    border-left: 2px solid #d6d6d6;;
+    }
+    
 }
 `
 
 export const MainStyle = styled.main`
 width: 100%;
+
 
 `

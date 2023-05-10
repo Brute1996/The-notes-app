@@ -6,27 +6,27 @@ import SearchBoxStyle from "./SearchBox.styled";
 
 const SearchBox = () => {
     
-    const { setSearchQuery } = useContext(NotesContext);
-  const [isHidden, setIsHidden] = useState(false);
+  const { searchQuery, setSearchQuery } = useContext(NotesContext);
+  const [isIconHidden, setIconIsHidden] = useState(false);
 
-  function handleFocus() {
-    setIsHidden(true);
-  }
+  const handleFocus = () => {
+    setIconIsHidden(true);
+  };
 
-  function handleBlur() {
-    setIsHidden(false);
-  }
+  const handleBlur = () => {
+    setIconIsHidden(false);
+  };
 
 
     const handleSearch = debounce((e) => {
-        const { value } = e.target;
-        setSearchQuery(value)
+      const { value } = e.target;
+      setSearchQuery(value);
     }, 500);
 
 
     return (
         <SearchBoxStyle>
-            {!isHidden && <span className="search-icon"><AiOutlineSearch />Search</span>}
+            {!isIconHidden && !searchQuery && <span className="search-icon"><AiOutlineSearch />Search</span>}
             <input
                 onFocus={handleFocus}
                 onBlur={handleBlur}
