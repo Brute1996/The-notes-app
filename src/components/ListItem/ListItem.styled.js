@@ -24,6 +24,7 @@ export const ListItemStyle = styled.li`
   min-width: 150px;
   max-width: 150px;
   padding: 6px;
+  cursor: pointer;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
