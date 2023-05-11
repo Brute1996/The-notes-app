@@ -18,7 +18,8 @@ height: calc(100vh - 122px);
 .list-items-aside{
     width: 100%;
     @media (min-width: 768px) {
-        width: calc(100%/3.5);
+        min-width: calc(100%/3.5);
+        max-width: calc(100%/3.5);
     };
 
     .loader-wrapper{
@@ -32,6 +33,7 @@ height: calc(100vh - 122px);
 .workspace-section{
     width: 100%;
     height: 100%;
+    border-top: 2px solid #d6d6d6;
 
     @media (min-width: 768px) {
     border-right: 2px solid #d6d6d6;

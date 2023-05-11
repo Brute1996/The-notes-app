@@ -4,10 +4,15 @@ export const ListStyle = styled.ul`
   overflow-y: scroll;
   height: 100%;
   display: flex;
+  min-height: 115px;
+  max-height: 115px;
 
   @media (min-width: 768px) {
     flex-direction: column;
-    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
   }
 `;
 

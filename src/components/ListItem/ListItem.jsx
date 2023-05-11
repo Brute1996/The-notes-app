@@ -57,8 +57,15 @@ const ListItem = () => {
                 note.values[noteBody] = "";
             }
             
-            return note.values[noteTitle].toLowerCase().includes(normlizeQuery)
 
+            if (note.values[noteTitle].toLowerCase().includes(normlizeQuery)
+                ||
+                note.values[noteBody].toLowerCase().includes(normlizeQuery)
+            ) {
+                return true;
+            } else {
+                return false;
+            }
         });
     };
 
