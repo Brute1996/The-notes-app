@@ -22,8 +22,6 @@ export const ListItemStyle = styled.li`
   flex-direction: column;
   gap: 8px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
   min-height: 115px;
   max-height: 115px;
   min-width: 150px;
