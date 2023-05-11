@@ -1,1 +1,1 @@
-Saving notes base on quintadb API (https://quintadb.com);
+Project based on quintadb API (https://quintadb.com);
