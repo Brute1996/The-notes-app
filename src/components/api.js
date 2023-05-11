@@ -71,6 +71,7 @@ const updateNote = async (noteIdToUpdate, note) => {
     console.log("Something is wrong: " + error);
   }
 };
+
 const api = {
   API_KEY,
   fieldsNamesId,

@@ -53,6 +53,7 @@ const ListItem = () => {
         return notes.filter((note) => {
             if (!note.values[noteTitle]) {
                 note.values[noteTitle] = "";
+            } else if (!note.values[noteBody]) {
                 note.values[noteBody] = "";
             }
             
