@@ -27,8 +27,8 @@ const Workspace = () => {
         };
         
 
-        inputTitleRef.current.value = selectedNote.values[noteTitle];
-        textAreaBodyRef.current.value = selectedNote.values[noteBody];
+        inputTitleRef.current.value = selectedNote.values[noteTitle] || "";
+        textAreaBodyRef.current.value = selectedNote.values[noteBody] || "";
     },[selectedNote])
 
 
