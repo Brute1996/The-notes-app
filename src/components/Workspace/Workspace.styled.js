@@ -24,6 +24,17 @@ const WorkspaceStyle = styled.div`
     font-weight: 500;
     color: grey;
 
+    &::after {
+      content: "";
+      display: block;
+      margin: 0 auto;
+      margin-top: 5px;
+      background-color: #d6d6d6;
+      max-width: 355px;
+      height: 4px;
+      border-radius: 5px;
+    }
+
     @media (min-width: 768px) {
       font-size: 18px;
       font-weight: 500;
