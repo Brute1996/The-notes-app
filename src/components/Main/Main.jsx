@@ -8,7 +8,7 @@ const Main = ({isLoaded}) => {
         <MainStyle>
             <MainContainer>
                 <aside className="list-items-aside">
-                    { isLoaded ? <ListItem /> : <div className="loader-wrapper"><Loader/></div>}
+                    { isLoaded ? <ListItem /> : <Loader/>}
                 </aside>
                 <section className="workspace-section">
                     <Workspace

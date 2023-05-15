@@ -39,6 +39,7 @@ const ListItem = () => {
 
         const selectedNoteIndex = notes.indexOf(selectedNote)
         const selectedNoteRef = notesRefs.current[selectedNoteIndex];
+        
         setSelectedNoteRef(selectedNoteRef)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedNote])
